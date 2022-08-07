@@ -1,4 +1,4 @@
-function solution(arr){
+const solution = (arr) => {
   let sum = arr.reduce((acc, cur)=>acc+cur, 0);
   let target = sum - 100;
   for(let i = 0; i < arr.length; i++){
