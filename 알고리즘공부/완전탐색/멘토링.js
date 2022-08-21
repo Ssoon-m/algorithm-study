@@ -52,18 +52,19 @@
 //   return answer;
 // };
 
-const solution = (test) => {
+const solution = (arr) => {
   let result = 0;
-  let n = test.length;
-  let m = test[0].length;
+  let n = arr.length;
+  let m = arr[0].length;
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= m; j++) {
       let cnt = 0;
       for (let k = 0; k < n; k++) {
-        let pi = (pj = 0);
+        let pi = 0;
+        let pj = 0;
         for (let q = 0; q < m; q++) {
-          if (test[k][q] === i) pi = q;
-          if (test[k][q] === j) pj = q;
+          if (arr[k][q] === i) pi = q;
+          if (arr[k][q] === j) pj = q;
         }
         if (pi < pj) cnt++;
       }
