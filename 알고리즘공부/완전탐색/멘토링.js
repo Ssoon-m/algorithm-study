@@ -52,32 +52,38 @@
 //   return answer;
 // };
 
-const solution = (arr) => {
-  let result = 0;
-  let n = arr.length;
-  let m = arr[0].length;
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= m; j++) {
-      let cnt = 0;
-      for (let k = 0; k < n; k++) {
-        let pi = 0;
-        let pj = 0;
-        for (let q = 0; q < m; q++) {
-          if (arr[k][q] === i) pi = q;
-          if (arr[k][q] === j) pj = q;
-        }
-        if (pi < pj) cnt++;
-      }
-      if (cnt === n) result++;
-    }
-  }
-  return result;
+// const solution = (arr) => {
+//   let result = 0;
+//   let n = arr.length;
+//   let m = arr[0].length;
+//   for (let i = 1; i <= m; i++) {
+//     for (let j = 1; j <= m; j++) {
+//       let cnt = 0;
+//       for (let k = 0; k < n; k++) {
+//         let pi = 0;
+//         let pj = 0;
+//         for (let q = 0; q < m; q++) {
+//           if (arr[k][q] === i) pi = q;
+//           if (arr[k][q] === j) pj = q;
+//         }
+//         if (pi < pj) cnt++;
+//       }
+//       if (cnt === n) result++;
+//     }
+//   }
+//   return result;
+// };
+
+// giftiel이 아닌경우는 무조건 false로 나오게 처리
+// giftiel인 경우엔 isAvailable을 return
+
+const solution = (data) => {
+  if (!data.giftielCouponCode) return false;
+  return data.isAvailable !== undefined ? data.isAvailable : true;
+};
+let objData = {
+  giftielCouponCode: 'hello',
+  isAvailable: false,
 };
 
-const arr = [
-  [3, 4, 1, 2],
-  [4, 3, 2, 1],
-  [3, 1, 4, 2],
-];
-
-console.log(solution(arr));
+const data = console.log(solution(objData));
