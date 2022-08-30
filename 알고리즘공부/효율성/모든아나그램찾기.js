@@ -35,6 +35,7 @@ const solution = (s, t) => {
 
 // 아나그램은 문자의 구성요소만 똑같으면 된다.
 // str2의 길이는 str1보다 작거나 같다.
+// bac aca caA aAa Aac acb cba
 let str1 = 'bacaAacba';
 let str2 = 'abc';
 // 정답 : 3
