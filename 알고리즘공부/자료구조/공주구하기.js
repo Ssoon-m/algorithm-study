@@ -1,17 +1,28 @@
 // 6시 10분
+// const solution = (N, K) => {
+//   const queue = [];
+//   for (let i = 1; i <= N; i++) queue.push(i);
+//   let count = 1;
+//   while (queue.length > 1) {
+//     if (count === K) count = 1;
+//     else {
+//       queue.push(queue[0]);
+//       count++;
+//     }
+//     queue.shift();
+//   }
+//   return queue[0];
+// };
+
 const solution = (N, K) => {
-  const queue = [];
-  for (let i = 1; i <= N; i++) queue.push(i);
-  let count = 1;
-  while (queue.length > 1) {
-    if (count === K) count = 1;
-    else {
-      queue.push(queue[0]);
-      count++;
-    }
+  let answer;
+  let queue = Array.from({ length: N }, (v, i) => i + 1);
+  while (queue.length) {
+    for (let i = 1; i < K; i++) queue.push(queue.shift());
     queue.shift();
+    if (queue.length === 1) answer = queue.shift();
   }
-  return queue[0];
+  return answer;
 };
 
 // 1번 왕자부터 시계방향으로 돌아가며 1부터 시작하여 번호를 외친다.
