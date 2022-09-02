@@ -1,11 +1,23 @@
 // 7시 23분 , 32분
-const solution = (r, n) => {
-  let temp = '';
-  for (let x of n) if (r.includes(x)) temp += x;
-  return temp === r ? 'YES' : 'NO';
+// const solution = (r, n) => {
+//   let temp = '';
+//   for (let x of n) if (r.includes(x)) temp += x;
+//   return temp === r ? 'YES' : 'NO';
+// };
+
+const solution = (need, plan) => {
+  let answer = 'YES';
+  let queue = need.split('');
+  for (let x of plan) {
+    if (queue.includes(x)) {
+      if (x !== queue.shift()) return 'NO';
+    }
+  }
+  if (queue.length > 0) return 'NO';
+  return answer;
 };
 
-let R = 'CBA';
-let N = 'CBDAGE';
+let need = 'CBA';
+let plan = 'CBDAGE';
 // 출력 : YES
-console.log(solution(R, N));
+console.log(solution(need, plan));
