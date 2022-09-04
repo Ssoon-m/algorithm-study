@@ -1,17 +1,33 @@
 // 2:47
+// const solution = (size, arr) => {
+//   const cache = Array.from({ length: size }, (_v, _i) => 0);
+//   arr.forEach((v) => {
+//     let pos = -1;
+//     for (let i = 0; i < size; i++) if (v === cache[i]) pos = i;
+//     if (pos === -1) {
+//       for (let i = size - 1; i >= 1; i--) {
+//         cache[i] = cache[i - 1];
+//       }
+//     } else {
+//       for (let i = pos; i >= 1; i--) {
+//         cache[i] = cache[i - 1];
+//       }
+//     }
+//     cache[0] = v;
+//   });
+//   return cache;
+// };
 const solution = (size, arr) => {
   const cache = Array.from({ length: size }, (_v, _i) => 0);
   arr.forEach((v) => {
     let pos = -1;
     for (let i = 0; i < size; i++) if (v === cache[i]) pos = i;
     if (pos === -1) {
-      for (let i = size - 1; i >= 1; i--) {
-        cache[i] = cache[i - 1];
-      }
+      cache.unshift(v);
+      if (cache.length > size) cache.pop();
     } else {
-      for (let i = pos; i >= 1; i--) {
-        cache[i] = cache[i - 1];
-      }
+      cache.splice(pos, 1);
+      cache.unshift(v);
     }
     cache[0] = v;
   });
