@@ -1,18 +1,18 @@
 const solution = (times) => {
   let answer = Number.MIN_SAFE_INTEGER;
-  let T_line = [];
+  const tmp = [];
   for (let x of times) {
-    T_line.push([x[0], 's']);
-    T_line.push([x[1], 'e']);
+    tmp.push([x[0], 'start']);
+    tmp.push([x[1], 'end']);
   }
-  // 아스키 코드 넘버상 e가 먼저이다.
-  T_line.sort((a, b) => {
+  tmp.sort((a, b) => {
     if (a[0] === b[0]) return a[1].charCodeAt(0) - b[1].charCodeAt(0);
     else return a[0] - b[0];
   });
+  console.log(tmp);
   let cnt = 0;
-  for (let x of T_line) {
-    if (x[1] === 's') cnt++;
+  for (let x of tmp) {
+    if (x[1] === 'start') cnt++;
     else cnt--;
     answer = Math.max(answer, cnt);
   }
