@@ -5,13 +5,9 @@ const solution = (size, arr) => {
     let pos = -1;
     for (let i = 0; i < cache.length - 1; i++) if (cache[i] === x) pos = i;
     if (pos === -1) {
-      for (let i = cache.length - 1; i >= 1; i--) {
-        cache[i] = cache[i - 1];
-      }
+      for (let i = cache.length - 1; i >= 1; i--) cache[i] = cache[i - 1];
     } else {
-      for (let i = pos; i >= 1; i--) {
-        cache[i] = cache[i - 1];
-      }
+      for (let i = pos; i >= 1; i--) cache[i] = cache[i - 1];
     }
     cache[0] = x;
   }
