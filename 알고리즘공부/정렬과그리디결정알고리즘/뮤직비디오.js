@@ -23,15 +23,14 @@ const count = (songs, capacity) => {
 };
 const solution = (m, arr) => {
   let answer;
-  let startPoint = Math.max(...arr);
-  let endPoint = arr.reduce((acc, cur) => acc + cur, 0);
-  while (startPoint <= endPoint) {
-    // startPoint 와 endPoint의 중간 지점을 찾는다.
-    let middlePoint = Math.floor((startPoint + endPoint) / 2);
-    if (count(arr, middlePoint) <= m) {
-      answer = middlePoint;
-      endPoint = middlePoint - 1;
-    } else startPoint = middlePoint + 1;
+  let sP = Math.max(...arr);
+  let eP = arr.reduce((acc, cur) => acc + cur, 0);
+  while (sP <= eP) {
+    let mP = Math.floor((sP + eP) / 2);
+    if (count(arr, mP) <= m) {
+      answer = mP;
+      eP = mP - 1;
+    } else sP = mP + 1;
   }
   return answer;
 };
