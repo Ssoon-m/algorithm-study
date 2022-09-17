@@ -1,4 +1,3 @@
-//
 const solution = (arr, target) => {
   let answer = 0;
   arr.sort((a, b) => a - b);
@@ -14,7 +13,6 @@ const solution = (arr, target) => {
   }
   return answer;
 };
-
 const arr = [23, 87, 65, 12, 57, 32, 99, 81];
 const target = 32;
 console.log(solution(arr, target));
