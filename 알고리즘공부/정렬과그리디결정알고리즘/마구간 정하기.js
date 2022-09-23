@@ -4,11 +4,11 @@
 
 const count = (stable, dist) => {
   let cnt = 1;
-  let endPoint = stable[0];
+  let sP = stable[0];
   for (let i = 1; i < stable.length; i++) {
-    if (stable[i] - endPoint >= dist) {
+    if (stable[i] - sP >= dist) {
       cnt++;
-      endPoint = stable[i];
+      sP = stable[i];
     }
   }
   return cnt;
@@ -20,9 +20,9 @@ const solution = (c, coordinate) => {
   let rt = coordinate[coordinate.length - 1];
   while (lt <= rt) {
     let mid = Math.ceil((lt + rt) / 2);
-    if (count(coordinate, mid) >= c) {
-      answer = mid;
+    if (count(coordinate, mid) >= C) {
       lt = mid + 1;
+      answer = mid;
     } else rt = mid - 1;
   }
   return answer;
