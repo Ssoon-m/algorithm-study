@@ -2,8 +2,8 @@ function solution(n, lost, reserve) {
   let map = new Map();
   let count = 0;
   for (let i = 1; i <= n; i++) map.set(i, 1);
-  for (let x of lost) if (map.has(x)) map.set(x, map.get(x) - 1);
-  for (let x of reserve) if (map.has(x)) map.set(x, map.get(x) + 1);
+  for (let l of lost) if (map.has(l)) map.set(l, map.get(l) - 1);
+  for (let r of reserve) if (map.has(r)) map.set(r, map.get(r) + 1);
   for (let i = 1; i <= map.size; i++) {
     if (map.get(i) === 2 && map.get(i + 1) === 0) {
       map.set(i, map.get(i) - 1);
