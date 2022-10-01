@@ -5,5 +5,4 @@ const solution = (numbers) => {
 };
 const arr = [6, 10, 2];
 
-// result = 6210
 console.log(solution(arr));
