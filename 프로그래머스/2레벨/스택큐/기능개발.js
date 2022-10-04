@@ -27,34 +27,32 @@
 
 // 따라서 5일째에 1개의 기능, 10일째에 3개의 기능, 20일째에 2개의 기능이 배포됩니다.
 
-const countDay = (_progress, speed) => {
-  let progress = _progress;
+const countDay = (progress, speed) => {
+  let _progress = progress;
   let count = 0;
-  while (progress < 100) {
-    progress += speed;
+  while (_progress < 100) {
+    _progress += speed;
     count++;
   }
   return count;
 };
-const solution = (progresses, speeds) => {
+function solution(progresses, speeds) {
   const stack = [];
   const result = [];
   for (let i = 0; i < progresses.length; i++) {
     stack.push(countDay(progresses[i], speeds[i]));
   }
-  // 7 3 9
   while (stack.length) {
     let n = stack.shift();
     let count = 1;
-    while (n > stack[0]) {
+    while (n >= stack[0]) {
       count++;
       stack.shift();
     }
     result.push(count);
   }
   return result;
-};
-
+}
 // const progresses = [93, 30, 55];
 // const speeds = [1, 30, 5];
 const progresses = [95, 90, 99, 99, 80, 99];
