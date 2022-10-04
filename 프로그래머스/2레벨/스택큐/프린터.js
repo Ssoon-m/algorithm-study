@@ -11,12 +11,11 @@
 // 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location
 // 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 return
 const solution = (priorities, location) => {
-  const list = priorities.map((v, i) => ({
-    loc: i,
-    val: v,
-  }));
+  const list = priorities.map((v, i) => {
+    return { loc: i, val: v };
+  });
   const queue = [];
-  while (priorities.length > 0) {
+  while (list.length > 0) {
     // let max = Math.max(...priorities);
     let n = list.shift();
     let max = list.some((ele) => ele.val > n.val);
