@@ -10,6 +10,7 @@
 // 현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities
 // 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location
 // 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 return
+// 깃 설정 테스트
 const solution = (priorities, location) => {
   const list = priorities.map((v, i) => {
     return { loc: i, val: v };
