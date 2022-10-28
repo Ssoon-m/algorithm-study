@@ -1,25 +1,4 @@
-// 한자리 숫자가 적힌 종이 조각이 흩어져있습니다. 흩어진 종이 조각을 붙여 소수를 몇 개 만들 수 있는지 알아내려 합니다.
-
-// 각 종이 조각에 적힌 숫자가 적힌 문자열 numbers가 주어졌을 때, 종이 조각으로 만들 수 있는 소수가 몇 개인지 return 하도록 solution 함수를 완성해주세요.
-
-// 제한사항
-// numbers는 길이 1 이상 7 이하인 문자열입니다.
-// numbers는 0~9까지 숫자만으로 이루어져 있습니다.
-// "013"은 0, 1, 3 숫자가 적힌 종이 조각이 흩어져있다는 의미입니다.
-// 입출력 예
-// numbers	return
-// "17"	3
-// "011"	2
-// 입출력 예 설명
-// 예제 #1
-// [1, 7]으로는 소수 [7, 17, 71]를 만들 수 있습니다.
-
-// 예제 #2
-// [0, 1, 1]으로는 소수 [11, 101]를 만들 수 있습니다.
-
-// 11과 011은 같은 숫자로 취급합니다.
-
-// (1 16) (2 8) (4 4) (8 2) (16 1)
+//https://velog.io/@9ummy/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-Level-2-%EC%86%8C%EC%88%98-%EC%B0%BE%EA%B8%B0-JavaScript
 
 const isPrime = (num) => {
   for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -29,11 +8,29 @@ const isPrime = (num) => {
 };
 
 const solution = (numbers) => {
-  for (let i = 0; i < numbers; i++) {
-    // numbers[i]
+  const arr = numbers.split('');
+  const answer = new Set();
+  // 같은 숫자의 경우 한 번만 세야 하므로 Set 사용해주기
+
+  // 만들 수 있는 모든 순열을 재귀적으로 찾기
+  function getPermutation(numbersArray, fixedNumber) {
+    if (numbersArray.length) {
+      for (let i = 0; i < numbersArray.length; i++) {
+        const temp = [...numbersArray];
+
+        // fixedNumber를 제외한 숫자 배열을 재귀함수 호출 시 넘기기 위함
+        temp.splice(i, 1);
+        if (isPrime(parseInt(fixedNumber + numbersArray[i]))) {
+          // 문자열을 parseInt 해서 넣어주어야 '011' 과 '11' 이 같은 숫자로 취급됨
+          answer.add(parseInt(fixedNumber + numbersArray[i]));
+        }
+        getPermutation(temp, fixedNumber + numbersArray[i]);
+      }
+    }
   }
+
+  getPermutation(arr, '');
+  return answer.size;
 };
 
-const numbers = [1, 7];
-
-console.log('solution', solution(numbers));
+console.log('solution', solution('17'));
